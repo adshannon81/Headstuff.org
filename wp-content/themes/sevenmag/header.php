@@ -4,49 +4,28 @@
 <!--[if (gte IE 10)|!(IE)]><!--><html xmlns="//w3.org/1999/xhtml" <?php language_attributes(); ?>><!--<![endif]-->
 <head>
 	<title><?php wp_title( '|', true, 'right' ); ?></title>
-	<meta charset="<?php bloginfo( 'charset' );?>" />
+	<meta charset="UTF-8" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
+	<link rel="pingback" href="http://www.headstuff.org/xmlrpc.php">
+	
+	<meta name="description" content='<?php echo gen_meta_desc(); ?>
+	
 	<?php 
 		wp_head();
-
-		if ( ot_get_option( 'meta_desc' ) !== '' ) {
-			if ( is_single() ) { ?>
-				<meta name="description" content='<?php echo gen_meta_desc(); ?>' />
-			<?php } else { ?>
-				<meta name="description" content="<?php echo ot_get_option( 'meta_desc' ); ?>">
-			<?php }
-		}
-
-		if ( ot_get_option( 'meta_key' ) !== '' ) {
-			global $post; 
-			if ( is_single() ) {
-				$tags = get_the_tags($post->ID);
-				$keywords = '';
-				if($tags) {
-					foreach($tags as $tag) :
-						$sep = (empty($keywords)) ? '' : ', ';
-						$keywords .= $sep . $tag->name;
-					endforeach;
-				?>
-					<meta name="keywords" content="<?php echo $keywords; ?>" />
-				<?php }
-			} else { ?>
-				<meta name="keywords" content="<?php echo ot_get_option( 'meta_key' ); ?>">
-			<?php }
-		} 
 	?>
 
 	<!--[if IE]>
 		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=EmulateIE8; IE=EDGE" />
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+	
+	<!--
 	<style>
 		.masonry_T {margin: 0 0 0 -<?php echo ot_get_option('masonry_margin') ?>px !important} .masonry_T .mosaicflow__item {margin: 0 0 0 <?php echo ot_get_option('masonry_margin') ?>px !important} 
 		.masonry_T .b_block {margin: 0 0 <?php echo ot_get_option('masonry_margin') ?>px 0 !important}<?php if ( ot_get_option('responsive') != 'on' ): ?>#layout {min-width: 1210px}<?php endif; ?>
 	</style>
+	-->
 </head>
 
 <body <?php body_class() ?>>
