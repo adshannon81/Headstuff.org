@@ -12,23 +12,14 @@
  */
 ?>
 <meta name="blitz" content="mu-e800f202-c82e7eff-16650048-d243c98a">
-<meta charset="<?php bloginfo('charset'); ?>" />
+<meta charset="UTF-8" />
 <title><?php wp_title(''); // stay compatible with SEO plugins ?></title>
 
 
-<?php if (!Bunyad::options()->no_responsive): // don't add if responsiveness disabled ?> 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<?php endif; ?>
-<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
-<?php if (Bunyad::options()->favicon): ?>
-<link rel="shortcut icon" href="<?php echo esc_attr(Bunyad::options()->favicon); ?>" />	
-<?php endif; ?>
+<link rel="pingback" href="http://www.headstuff.org/xmlrpc.php">
+<link rel="shortcut icon" href="http://www.headstuff.org/wp-content/uploads/2015/02/hsfav1.ico">
+<link rel="apple-touch-icon-precomposed" href="http://www.headstuff.org/wp-content/uploads/2015/02/hsfav2.png">
 
-<?php if (Bunyad::options()->apple_icon): ?>
-<link rel="apple-touch-icon-precomposed" href="<?php echo esc_attr(Bunyad::options()->apple_icon); ?>" />
-<?php endif; ?>
-	
 <?php wp_head(); ?>
 	
 <!--[if lt IE 9]>
@@ -200,13 +191,11 @@ elseif(is_category()) {
 
 <div class="main-wrap">
 
-<?php if (!Bunyad::options()->disable_topbar): ?>
 	<div class="top-bar">
 
 		<div class="wrap">
 			<section class="top-bar-content">
 			
-				<?php if (!Bunyad::options()->disable_topbar_ticker): ?>
 				<div class="trending-ticker">
 					<span class="heading"><?php echo Bunyad::options()->topbar_ticker_text; // filtered html allowed for admins ?></span>
 
@@ -222,7 +211,6 @@ elseif(is_category()) {
 						<?php wp_reset_postdata(); ?>
 					</ul>
 				</div>
-				<?php endif; ?>
 
 				<div class="search">
 					<form action="<?php echo esc_url(home_url('/')); ?>" method="get">
@@ -237,7 +225,7 @@ elseif(is_category()) {
 		</div>
 		
 	</div>
-<?php endif; ?>
+
 
 	<div id="main-head" class="main-head">
 		
@@ -245,17 +233,8 @@ elseif(is_category()) {
 		
 		  <header class="<?php echo $title ?>"><!--<?php var_dump($categoryName); var_dump($title); var_dump(count($ancestors)); ?>--!>
 			  <div class="title">
-				<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-				  <?php if (Bunyad::options()->image_logo): // custom logo ?>
-				  
-					<img src="<?php echo $header_image; ?>" class="logo-image" alt="<?php 
-						 echo esc_attr(get_bloginfo('name', 'display')); ?>" <?php 
-						 echo (Bunyad::options()->image_logo_retina ? 'data-at2x="'. Bunyad::options()->image_logo_retina .'"' : ''); 
-					 ?> />
-						 
-				<?php else: ?>
-					<?php echo do_shortcode(Bunyad::options()->text_logo); ?>
-				  <?php endif; ?>
+				<a href="http://headstuff.org" title="Headstuff" rel="home">
+					<img src="<?php echo $header_image; ?>" class="logo-image" alt="Headstuff" />
 				</a>
 				
 				</div>
@@ -299,8 +278,7 @@ elseif(is_category()) {
 		
 	</div>
 	
-<?php if (!Bunyad::options()->disable_breadcrumbs): ?>
+
 	<div class="wrap">
 		<?php Bunyad::core()->breadcrumbs(); ?>
 	</div>
-<?php endif; ?>
